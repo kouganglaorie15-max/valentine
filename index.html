@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>Veux-tu être mon Valentin ? ❤️</title>
 <style>
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
     background-color: #ffe6f0;
     overflow: hidden;
-    text-align: center;
 }
 
 /* Texte initial */
 #mainText {
+    text-align: center;
     margin-top: 50px;
     font-size: 40px;
 }
 
-/* Boutons Oui et Non */
+/* Boutons */
 button {
     padding: 15px 30px;
     font-size: 20px;
@@ -42,13 +42,14 @@ button {
 
 /* Ancien GIF */
 #mainGif {
+    display: block;
+    margin: 20px auto;
     width: 250px;
-    margin-top: 20px;
 }
 
 /* Photos */
 .photo {
-    width: 250px;
+    width: 300px;
     position: absolute;
     display: none;
     border-radius: 15px;
@@ -56,23 +57,23 @@ button {
 
 /* Texte romantique final */
 #finalText {
+    text-align: center;
     font-size: 30px;
     color: #ff1a75;
-    margin-top: 30px;
+    margin-top: 20px;
     display: none;
 }
 </style>
 </head>
 <body>
 
-<!-- Texte initial -->
 <h1 id="mainText">Veux-tu être mon Valentin ? ❤️</h1>
 
-<!-- Boutons -->
-<button id="yes">Oui</button>
-<button id="no">Non</button>
+<div style="text-align:center;">
+    <button id="yes">Oui</button>
+    <button id="no">Non</button>
+</div>
 
-<!-- Ancien GIF -->
 <img id="mainGif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
 
 <!-- Photos -->
@@ -80,17 +81,15 @@ button {
 <img id="photo2" class="photo" src="https://i.imgur.com/m5potVd.jpeg">
 <img id="photo3" class="photo" src="https://i.imgur.com/rIkzfBT.jpeg">
 
-<!-- Texte romantique -->
-<h1 id="finalText">You walked into my life and made it better without even trying ❤️</h1>
+<h1 id="finalText">Thank you for coming into my liffe and making it better without even trying ❤️</h1>
 
 <script>
-// Attendre que la page soit complètement chargée
 window.addEventListener("DOMContentLoaded", function() {
     // Bouton NON qui bouge
     const noBtn = document.getElementById("no");
     noBtn.addEventListener("mouseover", function() {
-        const x = Math.random() * (window.innerWidth - 260);
-        const y = Math.random() * (window.innerHeight - 260);
+        const x = Math.random() * (window.innerWidth - 320);
+        const y = Math.random() * (window.innerHeight - 320);
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
     });
@@ -98,6 +97,7 @@ window.addEventListener("DOMContentLoaded", function() {
     // Bouton OUI
     const yesBtn = document.getElementById("yes");
     yesBtn.addEventListener("click", function() {
+        // Alerte
         alert("Je savais que tu dirais oui 😘❤️");
 
         // Tout disparaît
@@ -107,21 +107,26 @@ window.addEventListener("DOMContentLoaded", function() {
         document.getElementById("mainGif").style.display = "none";
 
         // Texte romantique apparaît immédiatement
-        document.getElementById("finalText").style.display = "block";
+        const finalText = document.getElementById("finalText");
+        finalText.style.display = "block";
+        finalText.style.position = "absolute";
+        finalText.style.top = "20px";
+        finalText.style.left = "50%";
+        finalText.style.transform = "translateX(-50%)";
 
         // Photos
         const photo1 = document.getElementById("photo1");
         const photo2 = document.getElementById("photo2");
         const photo3 = document.getElementById("photo3");
 
-        // Positions des photos
-        photo1.style.top = "10px";
+        // Nouvelle position pour éviter chevauchement avec le texte
+        photo1.style.top = "100px";     // plus bas que le texte
         photo1.style.left = "10px";
 
         photo2.style.bottom = "10px";
-        photo2.style.right = "10px";
+        photo2.style.left = "10px";
 
-        photo3.style.top = "10px";
+        photo3.style.top = "100px"; 
         photo3.style.right = "10px";
 
         // Affiche les photos progressivement
