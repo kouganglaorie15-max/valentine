@@ -80,9 +80,12 @@ noBtn.addEventListener("mouseover", function() {
     noBtn.style.top = y + "px";
 });
 
-// Bouton OUI
+// Bouton OUI avec alert + GIF + photos
 function showGif() {
-    // Change le GIF principal avec un GIF mignon
+    // Affiche la fenêtre d'alerte en premier
+    alert('Je savais que tu dirais oui 😘❤️');
+
+    // Change le GIF principal avec le GIF mignon
     document.getElementById('mainGif').src = "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif";
 
     // Montre les photos une par une
@@ -98,6 +101,7 @@ function showGif() {
     }, 1000); // une nouvelle photo toutes les 1 seconde
 }
 </script>
+
 
 </body>
 </html>
