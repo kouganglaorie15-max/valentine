@@ -74,36 +74,47 @@ button {
 // Bouton NON qui bouge
 const noBtn = document.getElementById("no");
 noBtn.addEventListener("mouseover", function() {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
+    const x = Math.random() * (window.innerWidth - 260);
+    const y = Math.random() * (window.innerHeight - 260);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 });
 
-// Bouton OUI avec alert + GIF + photos
-function showGif() {
-    // Affiche la fenêtre d'alerte en premier
-    alert('Je savais que tu dirais oui 😘❤️');
+function startValentine() {
+    // Alerte
+    alert("Je savais que tu dirais oui 😘❤️");
 
-    // Mettre un petit délai pour s'assurer que l'alerte est fermée
-    setTimeout(() => {
-        // Change le GIF principal
-        document.getElementById('mainGif').src = "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif";
+    // Tout disparaît
+    document.getElementById("mainText").style.display = "none";
+    document.getElementById("yes").style.display = "none";
+    document.getElementById("no").style.display = "none";
+    document.getElementById("mainGif").style.display = "none";
 
-        // Montre les photos une par une
-        const photos = document.querySelectorAll('#photos img');
-        let i = 0;
-        const interval = setInterval(() => {
-            if(i < photos.length) {
-                photos[i].style.display = 'inline';
-                i++;
-            } else {
-                clearInterval(interval);
-            }
-        }, 1000); // une photo toutes les 1 seconde
-    }, 100); // délai de 100ms après l'alerte
+    // Affiche immédiatement le texte romantique
+    document.getElementById("finalText").style.display = "block";
+
+    // Sélection des photos
+    const photo1 = document.getElementById("photo1");
+    const photo2 = document.getElementById("photo2");
+    const photo3 = document.getElementById("photo3");
+
+    // Positions des photos
+    photo1.style.top = "10px";
+    photo1.style.left = "10px";
+
+    photo2.style.bottom = "10px";
+    photo2.style.right = "10px";
+
+    photo3.style.top = "10px";
+    photo3.style.right = "10px";
+
+    // Affiche les photos progressivement après le texte
+    setTimeout(() => { photo1.style.display = "block"; }, 2000);   // 2 sec après le texte
+    setTimeout(() => { photo2.style.display = "block"; }, 5000);   // 3 sec après la 1ère
+    setTimeout(() => { photo3.style.display = "block"; }, 8000);   // 3 sec après la 2ème
 }
 </script>
+
 
 
 </body>
