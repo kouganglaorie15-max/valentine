@@ -69,7 +69,7 @@ button {
 <h1 id="mainText">Veux-tu être mon Valentin ? ❤️</h1>
 
 <!-- Boutons -->
-<button id="yes" onclick="startValentine()">Oui</button>
+<button id="yes">Oui</button>
 <button id="no">Non</button>
 
 <!-- Ancien GIF -->
@@ -84,49 +84,52 @@ button {
 <h1 id="finalText">You walked into my life and made it better without even trying ❤️</h1>
 
 <script>
-// Bouton NON qui bouge
-const noBtn = document.getElementById("no");
-noBtn.addEventListener("mouseover", function() {
-    const x = Math.random() * (window.innerWidth - 260);
-    const y = Math.random() * (window.innerHeight - 260);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+// Attendre que la page soit complètement chargée
+window.addEventListener("DOMContentLoaded", function() {
+    // Bouton NON qui bouge
+    const noBtn = document.getElementById("no");
+    noBtn.addEventListener("mouseover", function() {
+        const x = Math.random() * (window.innerWidth - 260);
+        const y = Math.random() * (window.innerHeight - 260);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    // Bouton OUI
+    const yesBtn = document.getElementById("yes");
+    yesBtn.addEventListener("click", function() {
+        alert("Je savais que tu dirais oui 😘❤️");
+
+        // Tout disparaît
+        document.getElementById("mainText").style.display = "none";
+        document.getElementById("yes").style.display = "none";
+        document.getElementById("no").style.display = "none";
+        document.getElementById("mainGif").style.display = "none";
+
+        // Texte romantique apparaît immédiatement
+        document.getElementById("finalText").style.display = "block";
+
+        // Photos
+        const photo1 = document.getElementById("photo1");
+        const photo2 = document.getElementById("photo2");
+        const photo3 = document.getElementById("photo3");
+
+        // Positions des photos
+        photo1.style.top = "10px";
+        photo1.style.left = "10px";
+
+        photo2.style.bottom = "10px";
+        photo2.style.right = "10px";
+
+        photo3.style.top = "10px";
+        photo3.style.right = "10px";
+
+        // Affiche les photos progressivement
+        setTimeout(() => { photo1.style.display = "block"; }, 2000);
+        setTimeout(() => { photo2.style.display = "block"; }, 5000);
+        setTimeout(() => { photo3.style.display = "block"; }, 8000);
+    });
 });
-
-// Fonction principale pour Oui
-function startValentine() {
-    // Fenêtre d'alerte
-    alert("Je savais que tu dirais oui 😘❤️");
-
-    // Tout disparaît
-    document.getElementById("mainText").style.display = "none";
-    document.getElementById("yes").style.display = "none";
-    document.getElementById("no").style.display = "none";
-    document.getElementById("mainGif").style.display = "none";
-
-    // Texte romantique apparaît immédiatement
-    document.getElementById("finalText").style.display = "block";
-
-    // Sélection des photos
-    const photo1 = document.getElementById("photo1");
-    const photo2 = document.getElementById("photo2");
-    const photo3 = document.getElementById("photo3");
-
-    // Positions des photos aux coins
-    photo1.style.top = "10px";
-    photo1.style.left = "10px";
-
-    photo2.style.bottom = "10px";
-    photo2.style.right = "10px";
-
-    photo3.style.top = "10px";
-    photo3.style.right = "10px";
-
-    // Affiche les photos progressivement avec 3 sec d'écart
-    setTimeout(() => { photo1.style.display = "block"; }, 2000);
-    setTimeout(() => { photo2.style.display = "block"; }, 5000);
-    setTimeout(() => { photo3.style.display = "block"; }, 8000);
-}
 </script>
 
 </body>
