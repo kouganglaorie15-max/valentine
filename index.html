@@ -5,70 +5,83 @@
 <title>Veux-tu être mon Valentin ? ❤️</title>
 <style>
 body {
-    text-align: center;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     background-color: #ffe6f0;
     overflow: hidden;
+    text-align: center;
 }
 
-h1 {
+/* Texte initial */
+#mainText {
     margin-top: 50px;
     font-size: 40px;
 }
 
+/* Boutons Oui et Non */
 button {
     padding: 15px 30px;
     font-size: 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    position: absolute;
+    position: relative;
 }
 
 #yes {
     background-color: #ff4d6d;
     color: white;
-    left: 40%;
-    top: 60%;
+    margin-right: 10px;
 }
 
 #no {
     background-color: #444;
     color: white;
-    left: 55%;
-    top: 60%;
 }
 
-#photos {
+/* Ancien GIF */
+#mainGif {
+    width: 250px;
     margin-top: 20px;
 }
-#photos img {
-    width: 150px;
-    margin: 10px;
-    border-radius: 10px;
-    display: none; /* caché au départ */
+
+/* Photos */
+.photo {
+    width: 250px;
+    position: absolute;
+    display: none;
+    border-radius: 15px;
+}
+
+/* Texte romantique final */
+#finalText {
+    font-size: 30px;
+    color: #ff1a75;
+    margin-top: 30px;
+    display: none;
 }
 </style>
 </head>
-
 <body>
 
-<h1>Veux-tu être mon Valentin ? ❤️</h1>
-
-<!-- GIF principal au départ -->
-<img id="mainGif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="250">
+<!-- Texte initial -->
+<h1 id="mainText">Veux-tu être mon Valentin ? ❤️</h1>
 
 <!-- Boutons -->
-<button id="yes" onclick="showGif()">Oui</button>
+<button id="yes" onclick="startValentine()">Oui</button>
 <button id="no">Non</button>
 
-<!-- Ici tu ajoutes les photos de vous deux -->
-<div id="photos">
-    <!-- Exemple : remplace ces liens par vos vraies photos -->
-    <img src="https://i.imgur.com/7P7biIJ.jpeg">
-    <img src="https://i.imgur.com/m5potVd.jpeg">
-    <img src="https://i.imgur.com/rIkzfBT.jpeg">
-</div>
+<!-- Ancien GIF -->
+<img id="mainGif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+
+<!-- Photos -->
+<img id="photo1" class="photo" src="https://i.imgur.com/7P7biIJ.jpeg">
+<img id="photo2" class="photo" src="https://i.imgur.com/m5potVd.jpeg">
+<img id="photo3" class="photo" src="https://i.imgur.com/rIkzfBT.jpeg">
+
+<!-- Texte romantique -->
+<h1 id="finalText">You walked into my life and made it better without even trying ❤️</h1>
 
 <script>
 // Bouton NON qui bouge
@@ -80,8 +93,9 @@ noBtn.addEventListener("mouseover", function() {
     noBtn.style.top = y + "px";
 });
 
+// Fonction principale pour Oui
 function startValentine() {
-    // Alerte
+    // Fenêtre d'alerte
     alert("Je savais que tu dirais oui 😘❤️");
 
     // Tout disparaît
@@ -90,7 +104,7 @@ function startValentine() {
     document.getElementById("no").style.display = "none";
     document.getElementById("mainGif").style.display = "none";
 
-    // Affiche immédiatement le texte romantique
+    // Texte romantique apparaît immédiatement
     document.getElementById("finalText").style.display = "block";
 
     // Sélection des photos
@@ -98,7 +112,7 @@ function startValentine() {
     const photo2 = document.getElementById("photo2");
     const photo3 = document.getElementById("photo3");
 
-    // Positions des photos
+    // Positions des photos aux coins
     photo1.style.top = "10px";
     photo1.style.left = "10px";
 
@@ -108,14 +122,12 @@ function startValentine() {
     photo3.style.top = "10px";
     photo3.style.right = "10px";
 
-    // Affiche les photos progressivement après le texte
-    setTimeout(() => { photo1.style.display = "block"; }, 2000);   // 2 sec après le texte
-    setTimeout(() => { photo2.style.display = "block"; }, 5000);   // 3 sec après la 1ère
-    setTimeout(() => { photo3.style.display = "block"; }, 8000);   // 3 sec après la 2ème
+    // Affiche les photos progressivement avec 3 sec d'écart
+    setTimeout(() => { photo1.style.display = "block"; }, 2000);
+    setTimeout(() => { photo2.style.display = "block"; }, 5000);
+    setTimeout(() => { photo3.style.display = "block"; }, 8000);
 }
 </script>
-
-
 
 </body>
 </html>
