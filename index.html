@@ -85,20 +85,23 @@ function showGif() {
     // Affiche la fenêtre d'alerte en premier
     alert('Je savais que tu dirais oui 😘❤️');
 
-    // Change le GIF principal avec le GIF mignon
-    document.getElementById('mainGif').src = "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif";
+    // Mettre un petit délai pour s'assurer que l'alerte est fermée
+    setTimeout(() => {
+        // Change le GIF principal
+        document.getElementById('mainGif').src = "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif";
 
-    // Montre les photos une par une
-    const photos = document.querySelectorAll('#photos img');
-    let i = 0;
-    const interval = setInterval(() => {
-        if(i < photos.length) {
-            photos[i].style.display = 'inline';
-            i++;
-        } else {
-            clearInterval(interval);
-        }
-    }, 1000); // une nouvelle photo toutes les 1 seconde
+        // Montre les photos une par une
+        const photos = document.querySelectorAll('#photos img');
+        let i = 0;
+        const interval = setInterval(() => {
+            if(i < photos.length) {
+                photos[i].style.display = 'inline';
+                i++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 1000); // une photo toutes les 1 seconde
+    }, 100); // délai de 100ms après l'alerte
 }
 </script>
 
