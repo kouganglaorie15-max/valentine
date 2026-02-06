@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Valentine</title>
+<title>Veux-tu être mon Valentin ? ❤️</title>
 <style>
 body {
     text-align: center;
@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-    margin-top: 100px;
+    margin-top: 50px;
     font-size: 40px;
 }
 
@@ -38,6 +38,16 @@ button {
     left: 55%;
     top: 60%;
 }
+
+#photos {
+    margin-top: 20px;
+}
+#photos img {
+    width: 150px;
+    margin: 10px;
+    border-radius: 10px;
+    display: none; /* caché au départ */
+}
 </style>
 </head>
 
@@ -45,20 +55,48 @@ button {
 
 <h1>Veux-tu être mon Valentin ? ❤️</h1>
 
-<img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="250">
+<!-- GIF principal au départ -->
+<img id="mainGif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="250">
 
-<button id="yes" onclick="alert('Je savais que tu dirais oui mon chouchou 😘❤️')">Oui</button>
+<!-- Boutons -->
+<button id="yes" onclick="showGif()">Oui</button>
 <button id="no">Non</button>
 
-<script>
-const noBtn = document.getElementById("no");
+<!-- Ici tu ajoutes les photos de vous deux -->
+<div id="photos">
+    <!-- Exemple : remplace ces liens par vos vraies photos -->
+    <img src="https://i.imgur.com/7P7biIJ.jpeg">
+    <img src="https://i.imgur.com/m5potVd.jpeg">
+    <img src="https://i.imgur.com/rIkzfBT.jpeg">
+</div>
 
+<script>
+// Bouton NON qui bouge
+const noBtn = document.getElementById("no");
 noBtn.addEventListener("mouseover", function() {
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 });
+
+// Bouton OUI
+function showGif() {
+    // Change le GIF principal avec un GIF mignon
+    document.getElementById('mainGif').src = "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif";
+
+    // Montre les photos une par une
+    const photos = document.querySelectorAll('#photos img');
+    let i = 0;
+    const interval = setInterval(() => {
+        if(i < photos.length) {
+            photos[i].style.display = 'inline';
+            i++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 1000); // une nouvelle photo toutes les 1 seconde
+}
 </script>
 
 </body>
